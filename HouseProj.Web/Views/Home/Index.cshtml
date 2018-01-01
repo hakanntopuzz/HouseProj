@@ -1,0 +1,65 @@
+﻿
+@{
+}
+
+@section css{
+    <style type="text/css">
+        #divResult {
+            width: 600px;
+            margin-top: 50px;
+        }
+    </style>
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#btnSearch").click(function () {
+                $("#divResult").html('');
+
+                var keyword = $("#txtSearch").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Search", "Home")',
+                    data: { queries: keyword },
+                    success: function (data) {
+
+                        $("#searchCount").html(data.length);
+                        $.each(data,
+                            function (key, value) {
+                                var htmlString =
+                                    '<div> <b>Ürün Ad:</b> <span>' + value.Name + '</span> <br> <b>Fiyat:</b> <span>' + value.Price + '</span> <br> <img src=' + value.Image + ' height="50" width="50"/> </div> <hr>';
+
+                                $("#divResult").append(htmlString);
+                            });
+
+                    }
+                });
+            })
+
+
+        })
+    </script>
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="txtSearch" />
+
+        <input type="button" id="btnSearch" value="Ara !" />   <br /> <br />   Toplam <b id="searchCount"></b> kayıt listelendi
+    </div>
+
+    <div id="divResult"></div>
+
+</body>
+</html>

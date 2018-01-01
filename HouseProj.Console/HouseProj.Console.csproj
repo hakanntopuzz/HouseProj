@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4D44C98F-6C8C-45B9-922E-988DC11E8357}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{A5C4F587-E849-4CC1-8A0D-ECAFF31920BE}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HouseProj.Data</RootNamespace>
-    <AssemblyName>HouseProj.Data</AssemblyName>
+    <RootNamespace>HouseProj.Console</RootNamespace>
+    <AssemblyName>HouseProj.Console</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -53,13 +56,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IElasticContext.cs" />
-    <Compile Include="Dtos\SearchResponseDto.cs" />
-    <Compile Include="ElasticContext.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HouseProj.Data\HouseProj.Data.csproj">
+      <Project>{4D44C98F-6C8C-45B9-922E-988DC11E8357}</Project>
+      <Name>HouseProj.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HouseProj.Domain\HouseProj.Domain.csproj">
+      <Project>{c3841622-0380-417b-9999-eda3353a1872}</Project>
+      <Name>HouseProj.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HouseProj.Service\HouseProj.Service.csproj">
+      <Project>{d2f16966-667c-4d3b-bad4-8f1a26566cb1}</Project>
+      <Name>HouseProj.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
