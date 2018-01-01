@@ -47,7 +47,7 @@ namespace HouseProj.Service
         private QueryContainer AddQuery(string keyword)
         {
             QueryStringQuery.DefaultOperator = Operator.And; //yazılan her kelimeyi içermesi gerektiği için default operatörü and olarak atandı.
-            QueryStringQuery.Query = $@"\*:({keyword})";
+            QueryStringQuery.Query = $@"\*:({keyword})"; //aramayı bütün fieldlar üzerinde yapıyor.
 
             QueryContainer.QueryString = QueryStringQuery;
 
