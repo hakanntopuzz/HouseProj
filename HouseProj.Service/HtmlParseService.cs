@@ -8,11 +8,11 @@ namespace HouseProj.Service
 {
     public class HtmlParseService : IHtmlParseService
     {
-        private readonly List<Product> productList;
+        private readonly List<Product> _productList;
 
         public HtmlParseService()
         {
-            productList = new List<Product>();
+            _productList = new List<Product>();
         }
 
         private HtmlDocument GetHtml(string url)
@@ -39,7 +39,7 @@ namespace HouseProj.Service
 
                     HtmlDocument productDoc = GetHtml(href);
 
-                    productList.Add(new Product()
+                    _productList.Add(new Product()
                     {
                         Name = productDoc.DocumentNode.SelectSingleNode("//*[contains(@class,'urundetay_231')]").InnerText,
                         Price = productDoc.DocumentNode.SelectSingleNode("//*[contains(@class,'current-price')]").InnerText,
@@ -51,7 +51,7 @@ namespace HouseProj.Service
 
         public List<Product> GetProducts()
         {
-            return productList;
+            return _productList;
         }
     }
 }
